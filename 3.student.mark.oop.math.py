@@ -1,5 +1,7 @@
 import math
 import numpy as np
+import curses
+
 
 Students=[] # List of tuples cuz we dont need to change anything
 Courses=[]  # List of tuples ___
@@ -93,11 +95,40 @@ def student_ranking_gpa():
     for i in ranked:
         gpa = calc_gpa(i[0])
         print(f"Name: {i[0]} - Student ID: {i[1]} - GPA: {gpa}")
+
+# DECORATING FUNCTION WITH CURSES
+def show_title():
+    def screen(stdscr):
+        height, width = stdscr.getmaxyx()
+
+        if height < 8:
+            stdscr.addstr(0, 0, "Please make the terminal window taller.")
+            stdscr.refresh()
+            stdscr.getch()
+            return
+
+        curses.start_color()
+        curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
+
+        stdscr.clear()
+        stdscr.border()
+
+        stdscr.addstr(
+            2, 5,
+            "STUDENT MANAGEMENT SYSTEM",
+            curses.color_pair(1) | curses.A_BOLD
+        )
+
+        stdscr.addstr(4, 5, "Practical Work 3")
+        stdscr.addstr(6, 5, "Press any key to start...")
+
+        stdscr.refresh()
+        stdscr.getch()
+
+    curses.wrapper(screen)
     
-    
-    
-    
-    
+show_title()
+
 input_student()
 input_course()
 
