@@ -1,0 +1,9 @@
+Math | An | 18.0
+Math | Bao | 16.0
+Math | Lih | 17.0
+ICT | An | 13.0
+ICT | Bao | 15.0
+ICT | Lih | 14.0
+ML | An | 20.0
+ML | Bao | 17.0
+ML | Lih | 14.0

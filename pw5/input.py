@@ -75,6 +75,10 @@ def load_student():
         for line in file:
             name, student_id, dob = line.strip().split("|") # strip rm new ln, split | turns data into list (by attributes)
             
+            name = name.strip()
+            student_id = student_id.strip()
+            dob = dob.strip()
+            
             students.append(
                 Student(name, int(student_id), dob)
             )
@@ -86,6 +90,10 @@ def load_course():
     with open("courses.txt", "r") as file:
         for line in file:
             name, course_id, credit = line.strip().split("|")
+            
+            name = name.strip()
+            course_id = course_id.strip()
+            credit = credit.strip()
             
             courses.append(
                 Course(name, int(course_id), int(credit))
@@ -99,11 +107,15 @@ def load_mark():
         for line in file:
             course_name, student_name, mark = line.strip().split("|")
             
+            course_name = course_name.strip()
+            student_name = student_name.strip() # strip(): remove redundant space
+            mark = mark.strip()
+            
             if course_name not in Marks:
                 Marks[course_name] = {}
                 
             Marks[course_name][student_name] = float(mark)
     return Marks
         
-    
+
     
